@@ -21,7 +21,10 @@
   <meta http-equiv="Reply-to" content="info@auhuur.tv" />
   <meta name="expires" content="" />
   <meta name="revisit-after" content="2 days" />
-
+  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <!-- Favicons -->
   <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/apple-logo-icon.png" rel="apple-touch-icon">
@@ -78,54 +81,38 @@
       updateSubscribers();
       updateSubscriberCount();
 }, 30000);
-     
     });
-
     function updateLatestFollowers()
     {
     
       $.ajax({
-        url: 'http://localhost:8000?f=latestfollowers',
+        url: 'https://twitch.api.auhuur.tv?f=latestfollowers',
         type: 'GET',
         success: function (output) {
-         
           var json = JSON.parse(output);
-
           $("#latestFollower").text(json[0].from_name);
-    
-
-          
         }
       });
     }
+
     function updateFollowerCount()
     {
-     
       $.ajax({
-        url: 'http://localhost:8000?f=followercount',
+        url: 'https://twitch.api.auhuur.tv?f=followercount',
         type: 'GET',
         success: function (output) {
-         
-         
-          $("#followercount").text(output);
-    
-
-          
+         $("#followercount").text(output);
         }
       });
     }
+
     function updateSubscribers()
     {
-    
       $.ajax({
-        url: 'http://localhost:8000?f=latestSubscriber',
+        url: 'https://twitch.api.auhuur.tv?f=latestSubscriber',
         type: 'GET',
         success: function (output) {
-         
           $("#latestsubscriber").text(output);
-    
-
-          
         }
       });
     }
@@ -133,7 +120,7 @@
     {
     
       $.ajax({
-        url: 'http://localhost:8000?f=subscriptionCount',
+        url: 'https://twitch.api.auhuur.tv?f=subscriptionCount',
         type: 'GET',
         success: function (output) {
          
